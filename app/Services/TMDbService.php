@@ -30,7 +30,9 @@ class TMDbService
         $this->client = new Client([
             'base_uri' => $this::BASE_URI,
         ]);
+
     }
+
     public function searchMovies($query = "Rambo")
     {
         $contents = null;
@@ -38,14 +40,13 @@ class TMDbService
         try {
 
             $key = $this::API_KEY;
-            $response = $this->client->request('GET', "search/movie?api_key=$key&query=$query");
+            $response = $this->client->request('GET', "search/movie?api_key=$key&query=$query", ['verify' => false]);
             $body = $response->getBody();
             $contents = $body->getContents();
+            // GuzzleException
         } catch (ClientErrorResponseException $exception) {
             $contents = $exception->getResponse()->getBody(true);
         }
-
-
 
         return $contents;
     }
