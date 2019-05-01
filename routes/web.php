@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/message', function () {
+    return 'Felicidades';
+});
+
+// Route::middleware('cors')->get('/search', 'API\MovieController@search');
+// Route::middleware('cors')->get('/details', 'API\MovieController@details');
