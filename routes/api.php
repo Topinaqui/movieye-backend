@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 |
  */
 
-Route::middleware('cors')->get('/search', 'API\MovieController@search');
-Route::middleware('cors')->get('/details', 'API\MovieController@details');
+Route::middleware('cors')->post('/search', 'API\MovieController@search');
+Route::middleware('cors')->post('/details', 'API\MovieController@details');
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
